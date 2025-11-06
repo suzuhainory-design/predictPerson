@@ -1,4 +1,3 @@
-# src/train.py
 import pandas as pd
 import numpy as np
 import os
@@ -10,7 +9,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, PolynomialFeatures
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 from imblearn.over_sampling import SMOTE
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
@@ -94,7 +93,6 @@ X_test['RiskScore'] = risk_scores_test
 
 logger.info(f"RiskScore added! Train mean: {risk_scores_train.mean():.4f}, Test mean: {risk_scores_test.mean():.4f}")
 
-
 # ============================= 3. 终极特征工程 =============================
 def ultimate_features(df):
     df = df.copy()
@@ -108,7 +106,6 @@ def ultimate_features(df):
     df['LowPayHighOT'] = (df['MonthlyIncome'] < 3000) & (df['OverTime'] == 'Yes')
     df['RecentHire'] = df['YearsAtCompany'] < 1
     return df
-
 
 X = ultimate_features(X)
 X_test = ultimate_features(X_test)
@@ -200,7 +197,6 @@ def post_process(pred, df_raw):
     pred[high_risk] = 1
     return pred
 
-
 X_test_raw = test_df.drop(columns=drop_cols, errors='ignore')
 X_test_raw = ultimate_features(X_test_raw)
 y_pred = post_process(y_pred, X_test_raw)
@@ -244,7 +240,6 @@ logger.info(f"Feature importance saved to {imp_path}")
 
 # ============================= 12. 模型调优可视化 =============================
 
-
 # --- 1. GridSearch 结果热力图 ---
 def plot_grid_search(grid, title, filename):
     results = pd.DataFrame(grid.cv_results_)
@@ -264,7 +259,6 @@ def plot_grid_search(grid, title, filename):
     plt.savefig(path, dpi=300, bbox_inches='tight')
     plt.close()
     logger.info(f"Grid search plot saved: {path}")
-
 
 plot_grid_search(grid_lgb, 'LightGBM Grid Search F1 Scores', 'grid_search_lgb.png')
 plot_grid_search(grid_xgb, 'XGBoost Grid Search F1 Scores', 'grid_search_xgb.png')
@@ -288,5 +282,20 @@ path = os.path.join(FIT_DIR, 'threshold_tuning.png')
 plt.savefig(path, dpi=300, bbox_inches='tight')
 plt.close()
 logger.info(f"Threshold tuning plot saved: {path}")
+
+# --- 3. 真实值 vs 预测值比较（混淆矩阵） ---
+if y_test is not None:
+    cm = confusion_matrix(y_test, y_pred)
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+                xticklabels=['Predicted 0', 'Predicted 1'],
+                yticklabels=['True 0', 'True 1'])
+    plt.title('Confusion Matrix: True vs Predicted Attrition')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    cm_path = os.path.join(FIT_DIR, 'true_vs_pred.png')
+    plt.savefig(cm_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    logger.info(f"True vs Predicted plot saved to {cm_path}")
 
 logger.info(f"Training completed at {format_time(datetime.now())}")

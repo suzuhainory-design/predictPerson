@@ -1,8 +1,6 @@
-# src/test.py
 import os
 import joblib
 from src.train import *
-
 
 # 在 train.py 训练完成后运行
 def save_model_artifacts():
