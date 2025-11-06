@@ -1,0 +1,106 @@
+2025-11-06 16:25:29,771 - train - INFO - Training started at 2025-11-06 16:25:29
+2025-11-06 16:25:29,777 - train - INFO - Train data loaded: (1100, 31), Test data loaded: (350, 31)
+2025-11-06 16:25:29,806 - train - INFO - 
+============================================================
+SURVIVAL ANALYSIS (Cox PH Model)
+============================================================
+2025-11-06 16:25:29,807 - train - INFO -                             Results: PHReg
+=======================================================================
+Model:                     PH Reg               Sample size:       1100
+Dependent variable:        YearsAtCompany       Num. events:       178 
+Ties:                      Breslow                                     
+-----------------------------------------------------------------------
+                  log HR log HR SE   HR      t    P>|t|  [0.025  0.975]
+-----------------------------------------------------------------------
+Age              -0.0585    0.0118 0.9432 -4.9515 0.0000 0.9216  0.9653
+MonthlyIncome    -0.0002    0.0000 0.9998 -5.8487 0.0000 0.9998  0.9999
+OverTime          1.8491    0.3718 6.3543  4.9732 0.0000 3.0660 13.1693
+BusinessTravel    0.5542    0.2104 1.7406  2.6343 0.0084 1.1524  2.6289
+SatisfactionMean -0.5684    0.1132 0.5664 -5.0201 0.0000 0.4537  0.7072
+OT_Travel        -0.5037    0.2778 0.6043 -1.8132 0.0698 0.3506  1.0416
+=======================================================================
+Confidence intervals are for the hazard ratios
+2025-11-06 16:25:29,817 - train - INFO - RiskScore added! Train mean: -3.9067, Test mean: -3.8536
+2025-11-06 16:25:29,832 - train - INFO - Final feature dim: 48
+2025-11-06 16:25:29,921 - train - INFO - After SMOTE: (1844, 48), Positive ratio: 0.500
+2025-11-06 16:25:34,120 - train - INFO - Best LGB Params: {'learning_rate': 0.01, 'max_depth': 5, 'n_estimators': 200}
+2025-11-06 16:25:35,622 - train - INFO - Best XGB Params: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}
+2025-11-06 16:25:36,745 - train - INFO - Best Threshold (F1): 0.510 | Val F1: 0.9239
+2025-11-06 16:25:36,753 - train - INFO - Predictions saved to D:\同步\linux\code\data\submission_ultimate.csv
+2025-11-06 16:25:36,754 - train - INFO - FINAL TEST ACCURACY: 0.8571 (85.7%)
+2025-11-06 16:25:36,754 - train - INFO - FINAL F1 SCORE: 0.5000
+2025-11-06 16:25:37,200 - train - INFO - Feature importance saved to D:\同步\linux\code\data\fit\feature_importance.png
+2025-11-06 16:25:37,200 - train - INFO - Training completed at 2025-11-06 16:25:37
+2025-11-06 16:33:09,373 - train - INFO - Training started at 2025-11-06 16:33:09
+2025-11-06 16:33:09,378 - train - INFO - Train data loaded: (1100, 31), Test data loaded: (350, 31)
+2025-11-06 16:33:09,409 - train - INFO - 
+============================================================
+SURVIVAL ANALYSIS (Cox PH Model)
+============================================================
+2025-11-06 16:33:09,410 - train - INFO -                             Results: PHReg
+=======================================================================
+Model:                     PH Reg               Sample size:       1100
+Dependent variable:        YearsAtCompany       Num. events:       178 
+Ties:                      Breslow                                     
+-----------------------------------------------------------------------
+                  log HR log HR SE   HR      t    P>|t|  [0.025  0.975]
+-----------------------------------------------------------------------
+Age              -0.0585    0.0118 0.9432 -4.9515 0.0000 0.9216  0.9653
+MonthlyIncome    -0.0002    0.0000 0.9998 -5.8487 0.0000 0.9998  0.9999
+OverTime          1.8491    0.3718 6.3543  4.9732 0.0000 3.0660 13.1693
+BusinessTravel    0.5542    0.2104 1.7406  2.6343 0.0084 1.1524  2.6289
+SatisfactionMean -0.5684    0.1132 0.5664 -5.0201 0.0000 0.4537  0.7072
+OT_Travel        -0.5037    0.2778 0.6043 -1.8132 0.0698 0.3506  1.0416
+=======================================================================
+Confidence intervals are for the hazard ratios
+2025-11-06 16:33:09,419 - train - INFO - RiskScore added! Train mean: -3.9067, Test mean: -3.8536
+2025-11-06 16:33:09,434 - train - INFO - Final feature dim: 48
+2025-11-06 16:33:09,505 - train - INFO - After SMOTE: (1844, 48), Positive ratio: 0.500
+2025-11-06 16:33:13,648 - train - INFO - Best LGB Params: {'learning_rate': 0.01, 'max_depth': 5, 'n_estimators': 200}
+2025-11-06 16:33:15,112 - train - INFO - Best XGB Params: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}
+2025-11-06 16:33:16,029 - train - INFO - Best Threshold (F1): 0.510 | Val F1: 0.9239
+2025-11-06 16:33:16,038 - train - INFO - Predictions saved to D:\同步\linux\code\data\submission_ultimate.csv
+2025-11-06 16:33:16,040 - train - INFO - FINAL TEST ACCURACY: 0.8571 (85.7%)
+2025-11-06 16:33:16,040 - train - INFO - FINAL F1 SCORE: 0.5000
+2025-11-06 16:33:16,481 - train - INFO - Feature importance saved to D:\同步\linux\code\data\fit\feature_importance.png
+2025-11-06 16:33:16,654 - train - INFO - Grid search plot saved: D:\同步\linux\code\data\fit\grid_search_lgb.png
+2025-11-06 16:33:16,828 - train - INFO - Grid search plot saved: D:\同步\linux\code\data\fit\grid_search_xgb.png
+2025-11-06 16:33:17,080 - train - INFO - Threshold tuning plot saved: D:\同步\linux\code\data\fit\threshold_tuning.png
+2025-11-06 16:33:17,080 - train - INFO - Training completed at 2025-11-06 16:33:17
+2025-11-06 16:51:26,859 - train - INFO - Training started at 2025-11-06 16:51:26
+2025-11-06 16:51:26,864 - train - INFO - Train data loaded: (1100, 31), Test data loaded: (350, 31)
+2025-11-06 16:51:26,996 - train - INFO - 
+============================================================
+SURVIVAL ANALYSIS (Cox PH Model)
+============================================================
+2025-11-06 16:51:26,997 - train - INFO -                             Results: PHReg
+=======================================================================
+Model:                     PH Reg               Sample size:       1100
+Dependent variable:        YearsAtCompany       Num. events:       178 
+Ties:                      Breslow                                     
+-----------------------------------------------------------------------
+                  log HR log HR SE   HR      t    P>|t|  [0.025  0.975]
+-----------------------------------------------------------------------
+Age              -0.0585    0.0118 0.9432 -4.9515 0.0000 0.9216  0.9653
+MonthlyIncome    -0.0002    0.0000 0.9998 -5.8487 0.0000 0.9998  0.9999
+OverTime          1.8491    0.3718 6.3543  4.9732 0.0000 3.0660 13.1693
+BusinessTravel    0.5542    0.2104 1.7406  2.6343 0.0084 1.1524  2.6289
+SatisfactionMean -0.5684    0.1132 0.5664 -5.0201 0.0000 0.4537  0.7072
+OT_Travel        -0.5037    0.2778 0.6043 -1.8132 0.0698 0.3506  1.0416
+=======================================================================
+Confidence intervals are for the hazard ratios
+2025-11-06 16:51:27,006 - train - INFO - RiskScore added! Train mean: -3.9067, Test mean: -3.8536
+2025-11-06 16:51:27,022 - train - INFO - Final feature dim: 48
+2025-11-06 16:51:27,150 - train - INFO - After SMOTE: (1844, 48), Positive ratio: 0.500
+2025-11-06 16:51:31,377 - train - INFO - Best LGB Params: {'learning_rate': 0.01, 'max_depth': 5, 'n_estimators': 200}
+2025-11-06 16:51:32,852 - train - INFO - Best XGB Params: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}
+2025-11-06 16:51:33,894 - train - INFO - Best Threshold (F1): 0.510 | Val F1: 0.9239
+2025-11-06 16:51:33,902 - train - INFO - Predictions saved to D:\同步\linux\code\data\submission_ultimate.csv
+2025-11-06 16:51:33,904 - train - INFO - FINAL TEST ACCURACY: 0.8571 (85.7%)
+2025-11-06 16:51:33,904 - train - INFO - FINAL F1 SCORE: 0.5000
+2025-11-06 16:51:34,441 - train - INFO - Feature importance saved to D:\同步\linux\code\data\fit\feature_importance.png
+2025-11-06 16:51:34,612 - train - INFO - Grid search plot saved: D:\同步\linux\code\data\fit\grid_search_lgb.png
+2025-11-06 16:51:34,783 - train - INFO - Grid search plot saved: D:\同步\linux\code\data\fit\grid_search_xgb.png
+2025-11-06 16:51:35,038 - train - INFO - Threshold tuning plot saved: D:\同步\linux\code\data\fit\threshold_tuning.png
+2025-11-06 16:51:35,038 - train - INFO - Training completed at 2025-11-06 16:51:35
+2025-11-06 16:51:35,061 - train - INFO - Model artifacts saved to model/.
